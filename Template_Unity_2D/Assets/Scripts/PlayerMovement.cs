@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
-        playerInput.bindingMask
+
         playerInput.NormalMovement.Jump.performed += context => Jump(); //second methode
         playerInput.NormalMovement.Move.performed += context => HorizontalMovement(context.ReadValue<Vector2>()); //second methode
 
