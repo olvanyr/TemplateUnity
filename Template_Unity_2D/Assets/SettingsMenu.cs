@@ -18,6 +18,7 @@ public class SettingsMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
+
     public void Start()
     {
         //get the value of all the mixer and aplie them to the slider 

@@ -11,15 +11,16 @@ public class MainMenu : MonoBehaviour
 
     public GameObject firstSelectedButton, firstSettingSelectedButton, optionClosedButton;
 
+    public AudioClip highlightSound;
+    public AudioClip onClickSound;
+
     private void Start()
     {
-        //we have to remove the first selected object
         EventSystem.current.SetSelectedGameObject(null);
-        //set the new selected object
         EventSystem.current.SetSelectedGameObject(firstSelectedButton);
     }
 
-    public void StartGameButton()
+    public void StartGameButton() //this one is obsolote, now I use a levelLoader
     {
         SceneManager.LoadScene(levelToLoad);
     }
@@ -44,6 +45,12 @@ public class MainMenu : MonoBehaviour
     
     public void OnClickSound()
     {
-        Application.Quit();
+        AudioManager.instance.PlayClipAt(onClickSound, "Sound", transform.position);
     }
+    public void HighlightSound()
+    {
+        AudioManager.instance.PlayClipAt(highlightSound, "Sound", transform.position);
+    }
+
+
 }
