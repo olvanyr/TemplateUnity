@@ -63,13 +63,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AudioManager.cs" />
-    <Compile Include="Assets\LevelLoader.cs" />
-    <Compile Include="Assets\MainMenu.cs" />
+    <Compile Include="Assets\LoadAndSaveData.cs" />
+    <Compile Include="Assets\LoadAndSaveSettings.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Class\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\MainMenuAndUI\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MainMenuAndUI\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\ScrollRectAutoScroll.cs" />
-    <Compile Include="Assets\SettingsMenu.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

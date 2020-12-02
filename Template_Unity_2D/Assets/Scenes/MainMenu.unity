@@ -1031,7 +1031,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 947273557}
+        m_MethodName: SetFullScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!114 &369177461
 MonoBehaviour:
@@ -1152,7 +1163,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926967197}
+      - m_Target: {fileID: 947273557}
         m_MethodName: SetMasterVolume
         m_Mode: 0
         m_Arguments:
@@ -1866,6 +1877,7 @@ MonoBehaviour:
   optionClosedButton: {fileID: 1204016406}
   highlightSound: {fileID: 8300000, guid: 79ddbe17b0340ef4ab66e42d9e2667cd, type: 3}
   onClickSound: {fileID: 8300000, guid: 79ddbe17b0340ef4ab66e42d9e2667cd, type: 3}
+  audioMixer: {fileID: 24100000, guid: 57a41f2531137ba49b776c5a67c59afc, type: 2}
 --- !u!114 &688213211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2371,7 +2383,6 @@ GameObject:
   - component: {fileID: 926967194}
   - component: {fileID: 926967196}
   - component: {fileID: 926967195}
-  - component: {fileID: 926967197}
   m_Layer: 5
   m_Name: SettingsWindow
   m_TagString: Untagged
@@ -2386,7 +2397,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926967193}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2397,13 +2408,13 @@ RectTransform:
   - {fileID: 1128913302}
   - {fileID: 1200743449}
   - {fileID: 1660641209}
-  m_Father: {fileID: 1767252092}
-  m_RootOrder: 1
+  m_Father: {fileID: 947273556}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1820, y: 980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926967195
 MonoBehaviour:
@@ -2442,23 +2453,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926967193}
   m_CullTransparentMesh: 0
---- !u!114 &926967197
+--- !u!1 &947273555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 947273556}
+  - component: {fileID: 947273557}
+  m_Layer: 5
+  m_Name: SettingsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &947273556
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947273555}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 926967194}
+  m_Father: {fileID: 1767252092}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &947273557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926967193}
+  m_GameObject: {fileID: 947273555}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 673f144b972c8ef49bf4a8e0c54af4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 57a41f2531137ba49b776c5a67c59afc, type: 2}
   masterSlider: {fileID: 373067584}
   musicSlider: {fileID: 1128913301}
   soundSlider: {fileID: 1200743450}
-  audioMixer: {fileID: 24100000, guid: 57a41f2531137ba49b776c5a67c59afc, type: 2}
-  resoltuionDropdown: {fileID: 1586796300}
+  fullscreenToggl: {fileID: 369177460}
+  resolutionDropdown: {fileID: 1586796300}
 --- !u!1 &949595347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2988,7 +3037,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926967197}
+      - m_Target: {fileID: 947273557}
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -3289,7 +3338,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926967197}
+      - m_Target: {fileID: 947273557}
         m_MethodName: SetSoundVolume
         m_Mode: 0
         m_Arguments:
@@ -4337,7 +4386,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 947273557}
+        m_MethodName: SetResolution
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1586796301
 MonoBehaviour:
@@ -4994,7 +5054,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 688213209}
-  - {fileID: 926967194}
+  - {fileID: 947273556}
   - {fileID: 77144479}
   m_Father: {fileID: 0}
   m_RootOrder: 1
