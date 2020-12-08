@@ -20,6 +20,8 @@ public class SettingsMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
+    public AudioClip onClickSound;
+
     private void Awake()
     {
         //Load fullscreen
@@ -86,16 +88,19 @@ public class SettingsMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("VolumeMaster", volume);
         audioMixer.SetFloat("VolumeMaster", volume);
+        OnClickSound();
     }
     public void SetSoundVolume(float volume)
     {
         PlayerPrefs.SetFloat("VolumeSound", volume);
         audioMixer.SetFloat("VolumeSound", volume);
+        OnClickSound();
     }
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat("VolumeMusic", volume);
         audioMixer.SetFloat("VolumeMusic", volume);
+        OnClickSound();
     }
 
     public void SetFullScreen(bool isFullScreen)
@@ -117,10 +122,16 @@ public class SettingsMenu : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        OnClickSound();
     }
 
     public void ClearSavedData()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    public void OnClickSound()
+    {
+        AudioManager.instance.PlayClipAt(onClickSound, "Sound", transform.position);
     }
 }

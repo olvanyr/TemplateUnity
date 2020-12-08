@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviour
     public void StartGameButton() //this one is obsolote, now I use a levelLoader
     {
         SceneManager.LoadScene(levelToLoad);
+        OnClickSound();
     }
 
     public void SettingsButton()
@@ -34,12 +35,14 @@ public class MainMenu : MonoBehaviour
         settingsWindow.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstSettingSelectedButton);
+        OnClickSound();
     }
     public void CloseSettingsButton()
     {
         settingsWindow.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(optionClosedButton);
+        OnClickSound();
     }
 
     public void QuitGameButton()

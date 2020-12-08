@@ -5,15 +5,25 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
 
+
+    public static PlayerMovement instance;
     private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogWarning("il y a plus d'une instance de PlayerMovement dans la scéne");
+            return;
+        }
+
+        instance = this;
+
+
         playerInput = new PlayerInput();
 
         playerInput.NormalMovement.Jump.performed += context => Jump(); //second methode
         playerInput.NormalMovement.Move.performed += context => HorizontalMovement(context.ReadValue<Vector2>()); //second methode
-
     }
 
     private void OnEnable() //if the script is enable, the we enable the PlayerInput we need to enable it
