@@ -8,16 +8,15 @@ public class AudioManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("il y a plus d'une instance de AudioManager dans la scéne");
+            //Debug.LogWarning("il y a plus d'une instance de AudioManager dans la scéne");
+            Destroy(this.gameObject);
             return;
         }
 
         instance = this;
+
+        DontDestroyOnLoad(transform.gameObject);
     }
-
-
-
-
 
 
     public AudioClip[] playlist;

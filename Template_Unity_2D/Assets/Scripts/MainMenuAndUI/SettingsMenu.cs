@@ -88,19 +88,19 @@ public class SettingsMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("VolumeMaster", volume);
         audioMixer.SetFloat("VolumeMaster", volume);
-        OnClickSound();
+        //OnClickSound();
     }
     public void SetSoundVolume(float volume)
     {
         PlayerPrefs.SetFloat("VolumeSound", volume);
         audioMixer.SetFloat("VolumeSound", volume);
-        OnClickSound();
+        //OnClickSound();
     }
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat("VolumeMusic", volume);
         audioMixer.SetFloat("VolumeMusic", volume);
-        OnClickSound();
+        //OnClickSound();
     }
 
     public void SetFullScreen(bool isFullScreen)

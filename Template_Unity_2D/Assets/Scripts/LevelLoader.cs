@@ -9,6 +9,7 @@ public class LevelLoader : MonoBehaviour
     public Slider slider;
     public Text progressText;
 
+
     public Animator transition;
     public float transitionTime = 1;
 

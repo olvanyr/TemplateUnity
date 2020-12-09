@@ -63,14 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraFollow.cs" />
-    <Compile Include="Assets\LoadAndSaveData.cs" />
-    <Compile Include="Assets\LoadAndSaveSettings.cs" />
-    <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Class\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\LoadAndSaveData.cs" />
     <Compile Include="Assets\Scripts\MainMenuAndUI\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MainMenuAndUI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenuAndUI\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Reference Include="UnityEngine">
