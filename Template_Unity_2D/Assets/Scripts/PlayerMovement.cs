@@ -7,6 +7,36 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerInput playerInput;
 
+    //ref to componente 
+    public Rigidbody2D rb;
+
+    //movement var
+    private float horizontalMovement;
+    private float verticalMovement;
+    public float moveSpeed;
+    public float jumpForce;
+    public float accelerationTime;
+    public bool isGrounded;
+        //vector to apply the velocity 
+        private Vector3 velocity = Vector3.zero;
+
+    //animation var
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
+    //take reference for the empty gameobject groundcheck
+    public Transform groundCheck;
+    //public float groundCheckRadius;
+    public Vector2 groundCheckSize;
+    public LayerMask collisionLayer;
+
+    //walljump var
+    private bool isTouchingFront;
+    public Transform frontCheck;
+    private bool isWallSliging;
+    public float wallSlidingSpeed;
+    public float frontCheckRadius;
+
 
     public static PlayerMovement instance;
     private void Awake()
@@ -23,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         playerInput = new PlayerInput();
 
         playerInput.NormalMovement.Jump.performed += context => Jump(); //second methode
-        playerInput.NormalMovement.Move.performed += context => HorizontalMovement(context.ReadValue<Vector2>()); //second methode
+        playerInput.NormalMovement.Move.performed += context => Movement(context.ReadValue<Vector2>()); //second methode
     }
 
     private void OnEnable() //if the script is enable, the we enable the PlayerInput we need to enable it
@@ -36,40 +66,83 @@ public class PlayerMovement : MonoBehaviour
         playerInput.Disable();
     }
 
-    void Update()
+
+    private void FixedUpdate()
     {
-        //first methode
-        /*float movementInput = playerInput.NormalMovement.Move.ReadValue<float>(); // we get the action value from our input class
-        float jumpInput = playerInput.NormalMovement.Jump.ReadValue<float>(); // we get the action value from our input class
+        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, collisionLayer);
+
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, frontCheckRadius, collisionLayer);
+
+        if (isTouchingFront == true && isGrounded == false && Mathf.Abs(rb.velocity.x) < 0.1f)
+        {
+            isWallSliging = true;
+        }
+        else
+        {
+            isWallSliging = false;
+        }
 
         
 
-        if (movementInput == 1)
+        MovePlayer(horizontalMovement, verticalMovement);
+        if (isWallSliging)
         {
-            Debug.Log("moving right");
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
-        if (movementInput == -1)
-        {
-            Debug.Log("moving left");
-        }
+    }
 
-        if (jumpInput == 1)
-        {
-            Debug.Log("jumping");
-        }
-        
-        playerInput.NormalMovement.Move.bindings*/
+   
+    
+    void Movement(Vector2 direction)
+    {
+        //Debug.Log("Player is moving : " + direction);
 
+        horizontalMovement = direction.x * moveSpeed * Time.fixedDeltaTime;
+        verticalMovement = direction.y * 0 * Time.fixedDeltaTime; //actualy, the vertical movvement is equal to zero
+ 
+    }
 
+    void MovePlayer(float _horizontalMovement, float verticalMovement)
+    {
+        Vector3 targetVelocity = new Vector2(_horizontalMovement, rb.velocity.y);//the force we aplie on x and the current y
+        //rb.velocity = targetVelocity;
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, accelerationTime);
+        flip(rb.velocity.x);
     }
 
     void Jump()
     {
-        Debug.Log("Player is jumping");
+        if (isGrounded)
+        {
+            rb.AddForce(new Vector2(0, jumpForce));
+        }
+
+        //Debug.Log("Player is jumping");
     }
-    
-    void HorizontalMovement(Vector2 direction)
+
+    void flip(float _velocity)
     {
-        Debug.Log("Player is moving : " + direction);
+        if (_velocity > 0.1f)
+        {
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            //spriteRenderer.flipX = false;
+        }
+        else if (_velocity < -0.1f)
+        {
+            //spriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(frontCheck.position, frontCheckRadius);
+        //Gizmos.DrawWireCube(frontCheck.position, wallCheckSize);
     }
 }
