@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject target;
+    public Transform target;
     public float timeOffset;
     public Vector3 positionOffset;
+
+    public Vector2 maxPosition;
+    public Vector2 minPosition;
 
     private Vector3 velocity;
 
@@ -27,6 +30,14 @@ public class CameraFollow : MonoBehaviour
         {
             return;
         }
-        transform.position = Vector3.SmoothDamp(transform.position, target.transform.position + positionOffset, ref velocity, timeOffset);
+
+
+        Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z) + positionOffset;
+
+        targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
+        targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
+
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, timeOffset);
+
     }
 }

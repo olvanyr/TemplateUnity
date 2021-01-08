@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Class\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\GameSaveManager.cs" />
     <Compile Include="Assets\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\LoadAndSaveData.cs" />
     <Compile Include="Assets\Scripts\MainMenuAndUI\MainMenu.cs" />
